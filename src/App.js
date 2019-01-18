@@ -11,23 +11,23 @@ class App extends Component {
       resultado: '0', // Muestra el valor actual y el resultado final
       fin: false, // Indica si ya se ha realizado una operación completa(true) o aún esta en proceso(false)
       botones: [
-        {texto:"0", accion: this.addNumero},
-        {texto:"1", accion: this.addNumero},
-        {texto:"2", accion: this.addNumero},
-        {texto:"3", accion: this.addNumero},
-        {texto:"4", accion: this.addNumero},
-        {texto:"5", accion: this.addNumero},
-        {texto:"6", accion: this.addNumero},
         {texto:"7", accion: this.addNumero},
         {texto:"8", accion: this.addNumero},
         {texto:"9", accion: this.addNumero},
-        {texto:"-", accion: this.operacion},
-        {texto:"+", accion: this.operacion},
-        {texto:"*", accion: this.operacion},
-        {texto:"/", accion: this.operacion},
-        {texto:".", accion: this.operacion},
-        {texto:"=", accion: this.igual},
-        {texto:"AC", accion: this.limpiar}
+        {texto:"*", accion: this.operacion, clase: "botonOperacion"},
+        {texto:"4", accion: this.addNumero},
+        {texto:"5", accion: this.addNumero},
+        {texto:"6", accion: this.addNumero},
+        {texto:"-", accion: this.operacion, clase: "botonOperacion"},
+        {texto:"1", accion: this.addNumero},
+        {texto:"2", accion: this.addNumero},
+        {texto:"3", accion: this.addNumero},
+        {texto:"+", accion: this.operacion, clase: "botonOperacion"},
+        {texto:"/", accion: this.operacion, clase: "botonOperacion"},
+        {texto:"0", accion: this.addNumero},
+        {texto:".", accion: this.operacion, clase: "botonOperacion"},
+        {texto:"=", accion: this.igual, clase: "botonIgual"},
+        {texto:"AC", accion: this.limpiar, clase: "botonLimpiar"}
       ]
     };
 
@@ -131,7 +131,7 @@ class App extends Component {
           </div>
           <div id="botones">
             {
-                this.state.botones.map(b => <Boton key={b.texto} texto={b.texto} accion={b.accion.bind(this)}/>)
+                this.state.botones.map(b => <Boton key={b.texto} clase={b.clase} texto={b.texto} accion={b.accion.bind(this)}/>)
             }
           </div>
         </div>
@@ -145,12 +145,13 @@ class Boton extends Component {
     super(props);
     this.state = {
       texto: props.texto,
-      accion: props.accion
+      accion: props.accion,
+      clase: props.clase
     }
   }
   render(){
     return (
-        <button onClick={this.state.accion} value={this.state.texto}>{this.state.texto}</button>
+        <button onClick={this.state.accion} className={this.state.clase} value={this.state.texto}>{this.state.texto}</button>
     );
   }
 }
