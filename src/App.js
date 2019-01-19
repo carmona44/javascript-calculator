@@ -56,7 +56,7 @@ class App extends Component {
         if(event.target.value !== '0'){
           let cadenaReemplazo = this.state.cadena.slice(0, this.state.cadena.length - 1);
           cadenaReemplazo += event.target.value;
-          
+
           this.setState({
             cadena: cadenaReemplazo,
             resultado: event.target.value
