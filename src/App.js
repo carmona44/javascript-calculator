@@ -47,11 +47,21 @@ class App extends Component {
         resultado: event.target.value
       });
     } else {
-      if (this.state.cadena === '0'){
+      if (this.state.resultado === '0' && this.state.cadena === "0"){
         this.setState({
           cadena: event.target.value,
           resultado: event.target.value
         });
+      } else if (this.state.resultado === '0' && this.state.cadena !== "0"){
+        if(event.target.value !== '0'){
+          let cadenaReemplazo = this.state.cadena.slice(0, this.state.cadena.length - 1);
+          cadenaReemplazo += event.target.value;
+          
+          this.setState({
+            cadena: cadenaReemplazo,
+            resultado: event.target.value
+          });
+        }
       } else {
         if(!regex.test(this.state.resultado)){
           this.setState({
@@ -79,17 +89,17 @@ class App extends Component {
         resultado: event.target.value
       });
     } else {
-      if(regex.test(this.state.cadena[this.state.cadena.length - 1]) && event.target.value !== '.'){
+      if(regex.test(this.state.cadena[this.state.cadena.length - 1]) && event.target.value !== '.'){ // Operador
         this.setState({
           cadena: this.state.cadena.concat(event.target.value),
           resultado: event.target.value
         });
-      } else if (event.target.value === '.' && regex.test(this.state.cadena[this.state.cadena.length - 1]) && regex2.test(this.state.resultado)){
+      } else if (event.target.value === '.' && regex.test(this.state.cadena[this.state.cadena.length - 1]) && regex2.test(this.state.resultado)){ // Decimal
         this.setState({
           cadena: this.state.cadena.concat(event.target.value),
           resultado: this.state.resultado.concat(event.target.value)
         });
-      } else if (event.target.value !== '.' && !regex.test(this.state.cadena[this.state.cadena.length - 1])){
+      } else if (event.target.value !== '.' && !regex.test(this.state.cadena[this.state.cadena.length - 1])){ //Cambio último operador
         let nuevaCadena =  this.state.cadena.slice(0, this.state.cadena.length - 1);
         nuevaCadena += event.target.value;
 
