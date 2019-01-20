@@ -15,6 +15,7 @@
   border-radius: 5px;
   padding: 5px;
   background-color: darkslateblue;
+  width: 300px;
 }
 
 #display{
@@ -23,6 +24,8 @@
   margin-bottom: 10px;
   border-radius: 5px;
   font-family: digital;
+  overflow-wrap: break-word;
+  word-wrap: break-word;    
 }
 
 #botones{
@@ -34,7 +37,7 @@
 #cadena{
   color: orange;
   margin: 0px;
-    font-size: 20px;
+  font-size: 20px;
   padding-right: 5px;
 }
 
