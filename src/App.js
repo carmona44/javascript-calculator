@@ -80,7 +80,6 @@ class App extends Component {
 
   operacion(event){
     let regex = /\d/; //Que la cifra a comprobar sea numérica
-    let regex2 = /^\d$/; // Que todos los elementos de la cadena sean númericos
 
     if (this.state.fin && event.target.value !== "."){
       this.setState({
@@ -94,7 +93,7 @@ class App extends Component {
           cadena: this.state.cadena.concat(event.target.value),
           resultado: event.target.value
         });
-      } else if (event.target.value === '.' && regex.test(this.state.cadena[this.state.cadena.length - 1]) && regex2.test(this.state.resultado)){ // Decimal
+      } else if (event.target.value === '.' && regex.test(this.state.cadena[this.state.cadena.length - 1]) && !this.state.resultado.includes(".")){ // Decimal
         this.setState({
           cadena: this.state.cadena.concat(event.target.value),
           resultado: this.state.resultado.concat(event.target.value)
